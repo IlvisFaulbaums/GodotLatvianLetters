@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "#Script made by Ilvis Faulbaums.
+#Feel free to do whatever you want with it.
+#Skripts latviski runājošiem/rakstošiem
+#Garumzīmes un mīkstinājumzīmes!
+extends Node2D
+tool
+
+
+# Called when the node enters the scene tree for the first time.
+export var LatvianText = \"ABCD\"
+var latvianAbc = ['a', 'ā', 'b', 'c', 'č', 'd', 'e', 'ē', 'f', 'g', 'ģ', 'h', 'i', 'ī', 'j', 'k', 'ķ', 'l', 'ļ', 'm', 'n', 'ņ', 'o', 'p', 'r', 's', 'š', 't', 'u', 'ū', 'v', 'z', 'ž',
+' ','.', ',',';',':','!','?',')','(','+','-','*','/','\\\\','>','<','_','=','@','#','~','%','$','^','&','q','y','x','1','2','3','4','5','6','7','8','9','0','{','}','[',']',':)',':(',':D',';)']
+
+func emit_changed():
+	start(LatvianText)
+
+
+func _ready():
+
+	start(LatvianText)
+var latvianLetter	
+func start(LatvianText):
+#	latvianLetter.queue_free()
+	var textSplitted = LatvianText
+#	print(textSplitted)
+	var x = 0
+	for i in range(len(textSplitted)):
+		latvianLetter = Sprite.new()
+
+		latvianLetter.name = \"a\"+str(i)
+#		print(latvianLetter.name)
+		latvianLetter.texture = preload(\"res://addons/latvian_alphabet/LatvianAlphabet.png\")
+		latvianLetter.hframes = 9
+		latvianLetter.vframes = 9
+		print(\"unikālais grupas nosaukums būs:\", get_node(\".\").name)
+		latvianLetter.add_to_group(\"Group\"+name)
+#		latvianLetter.add_to_group(\"burti\")
+		for j in range(len(latvianAbc)):
+#			print(j)
+			if textSplitted[i] == latvianAbc[j] or textSplitted[i] == latvianAbc[j].to_upper():
+#				print(i)				
+				latvianLetter.frame = j
+				latvianLetter.position.x = x + 30
+#				latvianLetter.position.y = 300
+				x = latvianLetter.position.x
+				add_child(latvianLetter)
+
+
+
+
+var newText = \"\"
+var spriteToRemove
+func _process(delta):
+	
+	if newText != LatvianText:
+		newText = LatvianText
+#	func remove_sprites_from_group(group_name):
+#		var nodes_in_group = get_tree().get_nodes_in_group(\"burti\")
+		var nodes_in_group = get_tree().get_nodes_in_group(\"Group\"+name)
+		for node in nodes_in_group:
+			node.queue_free()
+
+		start(LatvianText)
+"
+
+[node name="LatvianLetters" type="Sprite"]
+position = Vector2( 10.2384, 32.9904 )
+script = SubResource( 1 )
+LatvianText = ""
