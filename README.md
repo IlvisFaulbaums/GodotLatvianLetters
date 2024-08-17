@@ -9,7 +9,7 @@ Tutoriālis:<br/>
 # Fontiem ir brīvā licence, jo tos zīmēju es pats savām rokām<br/>
 # taisīts godot engine v.3.2.stable.custom_build<br/>
 Diez vai ies uz godot 4 versijām, jo tam ir citādāks koda pieraksts. <br/>
-atver šo projektu un palaid "LatvianAlphabetDemo.tcsn" iekš godota un iespējo plaginu iekš:<br/>
+Atver šo projektu un palaid "LatvianAlphabetDemo.tcsn" iekš godota un iespējo plaginu iekš:<br/>
 Project -> Project Settings -> Plugins <br/>
 Tad nospied + (jeb New Node),<br/>
 Meklētājā ieraksti:<br/>
